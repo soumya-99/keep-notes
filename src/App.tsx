@@ -1,8 +1,13 @@
 import { Container } from "react-bootstrap"
 import { Routes, Route, Navigate } from "react-router-dom"
 import NewNote from "./components/NewNote"
+import { useLocalStorage } from "./hooks/useLocalStorage"
+import { RawNote } from "./models/model"
 
 function App() {
+	const [notes, setNotes] = useLocalStorage<RawNote[]>("NOTES", [])
+	const [tags, setTags] = useLocalStorage<Tag[]>("TAGS", [])
+
 	return (
 		<Container className="my-4">
 			<Routes>
